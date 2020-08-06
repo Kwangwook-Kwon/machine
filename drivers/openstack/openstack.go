@@ -48,8 +48,8 @@ type Driver struct {
 	ImageName                   string
 	ImageId                     string
 	KeyPairName                 string
-	NetworkName                 string
-	NetworkId                   string
+	NetworkNames     []string
+	NetworkIds       []string
 	UserData                    []byte
 	PrivateKeyFile              string
 	SecurityGroups              []string
