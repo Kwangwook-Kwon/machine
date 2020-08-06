@@ -82,6 +82,8 @@ func (c *GenericClient) CreatePort(nID string, MachineName string, Type string) 
 }
 
 func (c *GenericClient) CreateInstance(d *Driver) (string, error) {
+	NicType string;
+	
 	serverOpts := servers.CreateOpts{
 		Name:             d.MachineName,
 		FlavorRef:        d.FlavorId,
@@ -96,9 +98,9 @@ func (c *GenericClient) CreateInstance(d *Driver) (string, error) {
 		for i, nID := range d.NetworkIds {
 			switch i {
     				case 0:
-					NicType := "normal"
+					NicType = "normal"
     				default:
-					NicType := "direct"
+					NicType = "direct"
     			}
 			PortID := c.CreatePort(nID , d.MachineName , NicType)
 			serverOpts.Networks[i] = servers.Network{
