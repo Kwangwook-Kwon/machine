@@ -57,7 +57,7 @@ type GenericClient struct {
 	Network  *gophercloud.ServiceClient
 }
 
-func (c *GenericClient) CreatePort(nID string, MachineName string, Type string) (string, error) {
+func (c *GenericClient) CreatePort(nID string, MachineName string, Type string) (string) {
 	
 	asu := true
 	
@@ -77,7 +77,7 @@ func (c *GenericClient) CreatePort(nID string, MachineName string, Type string) 
 			panic(err)
 		}
 	
-	return port.ID, nil
+	return port.ID
 	
 }
 
@@ -98,10 +98,11 @@ func (c *GenericClient) CreateInstance(d *Driver) (string, error) {
     				case 0:
 					Type:= "normal"
     				default:
-        				Type = "direct"
+					Type := "direct"
     			}
+			PortID := CreatePort(nID , MachineName , Type)
 			serverOpts.Networks[i] = servers.Network{
-				Port : CreatePort(nID , MachineName , Type) ,
+				Port : PortID ,
 			}
 		}
 	}
