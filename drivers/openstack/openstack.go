@@ -354,7 +354,6 @@ func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
 	if flags.String("openstack-net-name") != "" {
 		d.NetworkNames = strings.Split(flags.String("openstack-net-name"), ",")
 	}
-	d.NetworkName = flags.String("openstack-net-name")
 	if flags.String("openstack-sec-groups") != "" {
 		d.SecurityGroups = strings.Split(flags.String("openstack-sec-groups"), ",")
 	}
