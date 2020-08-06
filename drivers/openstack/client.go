@@ -82,7 +82,7 @@ func (c *GenericClient) CreatePort(nID string, MachineName string, Type string) 
 }
 
 func (c *GenericClient) CreateInstance(d *Driver) (string, error) {
-	NicType string
+	var NicType string
 	
 	serverOpts := servers.CreateOpts{
 		Name:             d.MachineName,
