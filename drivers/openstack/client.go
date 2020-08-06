@@ -82,6 +82,8 @@ func (c *GenericClient) CreatePort(d *Driver, nID string, MachineName string) (s
 			panic(err)
 		}
 	
+	return port.ID
+	
 }
 
 func (c *GenericClient) CreateInstance(d *Driver) (string, error) {
