@@ -56,6 +56,26 @@ type GenericClient struct {
 	Network  *gophercloud.ServiceClient
 }
 
+func (c *GenericClient) CreatePort(d *Driver, string *nID, string *MachineName) (string, error) {
+	
+	portCreateOtps := ports.CreateOpts{
+		Name:   MachineName,
+		AdminStateUp: true,
+		NetworkID:   nID,
+		
+	}
+
+	createOpts := portsbinding.CreateOptsExt{
+		CreateOptsBuilder: portCreateOpts,
+		VNICType:          "direct",
+	}
+	port, err := ports.Create(networkClient, createOpts).Extract()
+		if err != nil {
+			panic(err)
+		}
+	
+}
+
 func (c *GenericClient) CreateInstance(d *Driver) (string, error) {
 	serverOpts := servers.CreateOpts{
 		Name:             d.MachineName,
