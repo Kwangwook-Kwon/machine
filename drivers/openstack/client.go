@@ -100,7 +100,7 @@ func (c *GenericClient) CreateInstance(d *Driver) (string, error) {
     				default:
 					Type := "direct"
     			}
-			PortID := CreatePort(nID , MachineName , Type)
+			PortID := c.CreatePort(nID , d.MachineName , Type)
 			serverOpts.Networks[i] = servers.Network{
 				Port : PortID ,
 			}
