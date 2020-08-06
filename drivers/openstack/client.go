@@ -66,9 +66,9 @@ func (c *GenericClient) CreatePort(d *Driver, nID string, MachineName string) (s
 
 	asu := true
 	
-	portCreateOtps := ports.CreateOpts{
+	portCreateOpts := ports.CreateOpts{
 		Name:   MachineName,
-		AdminStateUp: $asu,
+		AdminStateUp: &asu,
 		NetworkID:   nID,
 		
 	}
@@ -77,7 +77,7 @@ func (c *GenericClient) CreatePort(d *Driver, nID string, MachineName string) (s
 		CreateOptsBuilder: portCreateOpts,
 		VNICType:          "direct",
 	}
-	port, err := ports.Create(networkClient, createOpts).Extract()
+	port, err := ports.Create(fake.ServiceClient(), createOpts).Extract()
 		if err != nil {
 			panic(err)
 		}
