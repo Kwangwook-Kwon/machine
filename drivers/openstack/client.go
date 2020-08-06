@@ -59,9 +59,16 @@ type GenericClient struct {
 
 func (c *GenericClient) CreatePort(d *Driver, nID string, MachineName string) (string, error) {
 	
+	var s struct {
+		ports.Port
+		portsbinding.PortsBindingExt
+	}
+
+	asu := true
+	
 	portCreateOtps := ports.CreateOpts{
 		Name:   MachineName,
-		AdminStateUp: true,
+		AdminStateUp: $asu,
 		NetworkID:   nID,
 		
 	}
