@@ -56,7 +56,7 @@ type GenericClient struct {
 	Network  *gophercloud.ServiceClient
 }
 
-func (c *GenericClient) CreatePort(d *Driver, string *nID, string *MachineName) (string, error) {
+func (c *GenericClient) CreatePort(d *Driver, nID string, MachineName string) (string, error) {
 	
 	portCreateOtps := ports.CreateOpts{
 		Name:   MachineName,
