@@ -77,7 +77,7 @@ func (c *GenericClient) CreatePort(d *Driver, nID string, MachineName string) (s
 		CreateOptsBuilder: portCreateOpts,
 		VNICType:          "direct",
 	}
-	port, err := ports.Create(c.network, createOpts).Extract()
+	port, err := ports.Create(c.Network, createOpts).Extract()
 		if err != nil {
 			panic(err)
 		}
