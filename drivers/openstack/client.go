@@ -206,7 +206,7 @@ func (c *GenericClient) GetInstanceIPAddresses(d *Driver) ([]IPAddress, error) {
 	addresses := []IPAddress{}
 	for network, networkAddresses := range server.Addresses {
 //		for _, element := range networkAddresses.([]interface{}) {
-		_, element := networkAddresses.rancher
+		_, element := networkAddresses["rancher"]
 			address := element.(map[string]interface{})
 			version, ok := address["version"].(float64)
 			if !ok {
