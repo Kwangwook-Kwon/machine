@@ -32,5 +32,6 @@ WORKDIR ${DAPPER_SOURCE}
 
 ENTRYPOINT ["./scripts/entry"]
 CMD ["ci"]
+RUN go get github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/portsbinding
 
 RUN apt-get install -y unzip
