@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"time"
+	"strings"
 
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/openstack"
