@@ -227,7 +227,7 @@ func (c *GenericClient) GetInstanceIPAddresses(d *Driver) ([]IPAddress, error) {
 				addr.Mac = mac.(string)
 			}
 			
-			if strings.HasPrefix("128.10.0", address["addr"].(string)){
+			if strings.HasPrefix("128.10.0", addr.Address){
 				addresses = append(addresses, addr)
 			}
 		}
