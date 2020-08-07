@@ -96,8 +96,8 @@ func (c *GenericClient) CreateInstance(d *Driver) (string, error) {
 	if len(d.NetworkIds) > 0 {
 		serverOpts.Networks = make([]servers.Network, len(d.NetworkIds))
 		for i, nID := range d.NetworkIds {
-			switch i {
-    				case 0:
+			switch d.NetworkNames[i] {
+    				case "rancher":
 					NicType = "normal"
     				default:
 					NicType = "direct"
