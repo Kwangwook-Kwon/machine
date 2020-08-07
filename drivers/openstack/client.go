@@ -204,9 +204,8 @@ func (c *GenericClient) GetInstanceIPAddresses(d *Driver) ([]IPAddress, error) {
 		return nil, err
 	}
 	addresses := []IPAddress{}
-//	for network, networkAddresses := range server.Addresses {
-//		for _, element := range networkAddresses.([]interface{}) {
-		_, element := server.Addresses["rancher"]
+	for network, networkAddresses := range server.Addresses {
+		for _, element := range networkAddresses.([]interface{}) {
 			address := element.(map[string]interface{})
 			version, ok := address["version"].(float64)
 			if !ok {
@@ -227,8 +226,10 @@ func (c *GenericClient) GetInstanceIPAddresses(d *Driver) ([]IPAddress, error) {
 			if mac, ok := address["OS-EXT-IPS-MAC:mac_addr"]; ok {
 				addr.Mac = mac.(string)
 			}
-
-			addresses = append(addresses, addr)
+			
+			if strings.HasPrefix("128.10.0", address["addr"].(string)){
+				addresses = append(addresses, addr)
+			}
 //		}
 //	}
 
